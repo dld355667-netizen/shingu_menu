@@ -10,15 +10,23 @@ from datetime import datetime, timedelta
 TELEGRAM_BOT_TOKEN = '8743054120:AAH838bI6-ZfoN_zTND-uWnK9Y5kuDHGNrE'
 TELEGRAM_CHAT_ID = '5690339677'
 
+# 오늘과 내일 날짜 자동으로 가져오기
+now = datetime.now()
+tomorrow = now + timedelta(days=1)
+weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+
+TODAY_STR = now.strftime(f"%Y년 %m월 %d일 ({weekdays[now.weekday()]})")
+TOMORROW_STR = tomorrow.strftime(f"%Y년 %m월 %d일 ({weekdays[tomorrow.weekday()]})")
+
 # 서버에서 가져온 식단 데이터 (크롤링 결과 캐싱)
 MENU_DATA = {
     "today": {
-        "date": "2026년 4월 1일 (수요일)",
+        "date": TODAY_STR,
         "student": "• 조식: 햄참치마요덮밥, 하늘보리\n• 중식(한식): 순살안동찜닭, 미역국, 쌀밥, 감자고로케(케찹), 비빔막국수, 배추김치\n• 중식(양식): 미트소스스파게티, 크림스프, 후리가케밥, 프렌치토스트, 샐러드(드레싱), 배추김치\n• 분식: 불닭크림떡볶이, 튀김, 단무지",
         "staff": "• 중식: 오징어깻잎볶음, 소고기뭇국, 메밀전병구이, 메추리알조림, 들기름비빔국수, 배추김치"
     },
     "tomorrow": {
-        "date": "2026년 4월 2일 (목요일)",
+        "date": TOMORROW_STR,
         "student": "• 조식: 밥은핑계야도시락, 요구르트\n• 중식(한식): 제육볶음, 참치김치찌개, 쌀밥, 치킨너겟*머스타드, 콩나물무침, 깍두기\n• 중식(양식): 치킨스테이크, 참치김치찌개, 쌀밥, 카레우동, 브로컬리흑임자샐러드, 깍두기\n• 분식: 메뉴 없음",
         "staff": "• 중식: 간장불고기, 얼갈이된장국, 연근고로케&강정소스, 도토리묵김치무침, 상추겉절이, 깍두기"
     }
