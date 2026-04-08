@@ -1,0 +1,3 @@
+telegram_bot_api :8743054120:AAH838bI6-ZfoN_zTND-uWnK9Y5kuDHGNrE
+
+telegram_ID :5690339677
